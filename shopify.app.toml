@@ -1,0 +1,28 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "discount-function-app"
+client_id = "629ef6d7e9e8fc3e41b98081db03cd53"
+application_url = "https://only-suzuki-marie-cloudy.trycloudflare.com"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products, write_discounts"
+
+[auth]
+redirect_urls = [
+  "https://only-suzuki-marie-cloudy.trycloudflare.com/auth/callback",
+  "https://only-suzuki-marie-cloudy.trycloudflare.com/auth/shopify/callback",
+  "https://only-suzuki-marie-cloudy.trycloudflare.com/api/auth/callback",
+  "https://only-suzuki-marie-cloudy.trycloudflare.com/.shopify/graphiql/auth/callback"
+]
+
+[webhooks]
+api_version = "2023-10"
+
+[pos]
+embedded = false
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "testorderdemo.myshopify.com"

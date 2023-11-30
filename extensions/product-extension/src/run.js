@@ -27,6 +27,7 @@ export function run(input) {
   *   quantity: number
   *   percentage: number
   *   code: string
+  *   reject: string
   * }}
   */
   const configuration = JSON.parse(
@@ -37,9 +38,9 @@ export function run(input) {
     return EMPTY_DISCOUNT;
   }
 
-  // if (configuration.code === 'JW9KBN016525'){
-  //   return EMPTY_DISCOUNT;
-  // }
+  if (configuration.reject === '1'){
+    return EMPTY_DISCOUNT;
+  }
 
   const targets = input.cart.lines
     // Use the configured quantity instead of a hardcoded value

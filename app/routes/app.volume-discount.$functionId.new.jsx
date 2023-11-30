@@ -45,6 +45,7 @@ export const action = async ({ params, request }) => {
     title,
     method,
     code,
+    reject,
     combinesWith,
     usageLimit,
     appliesOncePerCustomer,
@@ -93,7 +94,8 @@ export const action = async ({ params, request }) => {
                 value: JSON.stringify({
                   quantity: configuration.quantity,
                   percentage: configuration.percentage,
-                  code: code
+                  code: code,
+                  reject: reject
                 }),
               },
             ],
@@ -174,6 +176,7 @@ export default function VolumeNew() {
       requirementSubtotal,
       requirementQuantity,
       usageLimit,
+      reject,
       appliesOncePerCustomer,
       startDate,
       endDate,
@@ -194,6 +197,7 @@ export default function VolumeNew() {
       requirementSubtotal: useField("0"),
       requirementQuantity: useField("0"),
       usageLimit: useField(null),
+      reject: useField('0'),
       appliesOncePerCustomer: useField(false),
       startDate: useField(todaysDate),
       endDate: useField(null),
@@ -209,6 +213,7 @@ export default function VolumeNew() {
         code: form.discountCode,
         combinesWith: form.combinesWith,
         usageLimit: form.usageLimit == null ? null : parseInt(form.usageLimit),
+        reject: form.reject,
         appliesOncePerCustomer: form.appliesOncePerCustomer,
         startsAt: form.startDate,
         endsAt: form.endDate,
@@ -284,6 +289,11 @@ export default function VolumeNew() {
                     autoComplete="on"
                     {...configuration.percentage}
                     suffix="%"
+                    />
+                    <TextField
+                    label="Reject at checkout/cart"
+                    {...reject}
+                    suffix=""
                     />
                 </BlockStack>
             </Card>
